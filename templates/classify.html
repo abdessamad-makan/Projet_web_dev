@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static\css\classify.css">
+    <title>Classify X-Ray Image</title>
+</head>
+<body>
+    <header>
+        <a href="/" class="home-icon">🏠</a>
+    </header>
+    <main>
+        <div class="form-container">
+            <form method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="file">Upload an X-Ray Image:</label>
+                    <input type="file" name="file" id="file" accept="image/*" required>
+                </div>
+                <button type="submit" class="btn">Classify</button>
+            </form>
+
+        <!-- Show classification result if available -->
+        {% if label %}
+        <section class="classification-result">
+            <h2>Classification Result</h2>
+            <p><strong>Label:</strong> {{ label }}</p>
+            {% if image %}
+            <img src="data:image/jpeg;base64,{{ image }}" alt="Uploaded X-Ray">
+            {% endif %}
+        </section>
+        {% endif %}
+    </main>
+</body>
+</html>
